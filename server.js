@@ -24,15 +24,17 @@ function parseEnvList(env) {
 var checkRateLimit = require("./lib/rate-limit")(process.env.CORSANYWHERE_RATELIMIT);
 
 var cors_proxy = require("./lib/cors-anywhere");
+
+// ssl: {
+// 	key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
+
+// 	cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
+
+// 	ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
+// },
+
 cors_proxy
 	.createServer({
-		ssl: {
-			key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
-
-			cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
-
-			ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
-		},
 		secure: true,
 		originBlacklist: originBlacklist,
 		originWhitelist: originWhitelist,
