@@ -4,14 +4,6 @@
   "description": "CORS Anywhere is a reverse proxy which adds CORS headers to the proxied request. Request URL is taken from the path",
   "license": "MIT",
   "author": "Rob Wu <rob@robwu.nl>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Rob--W/cors-anywhere.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Rob--W/cors-anywhere/issues/",
-    "email": "rob@robwu.nl"
-  },
   "keywords": [
     "cors",
     "cross-domain",
@@ -29,6 +21,7 @@
   ],
   "dependencies": {
     "http-proxy": "1.11.1",
+    "nodemon": "^2.0.15",
     "proxy-from-env": "0.0.1"
   },
   "devDependencies": {
@@ -43,7 +36,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha ./test/test*.js --reporter spec",
-    "test-coverage": "istanbul cover ./node_modules/.bin/_mocha -- test/test.js test/test-ratelimit.js --reporter spec"
+    "test-coverage": "istanbul cover ./node_modules/.bin/_mocha -- test/test.js test/test-ratelimit.js --reporter spec",
+    "start": "nodemon server"
   },
   "engines": {
     "node": ">=0.10.0"
