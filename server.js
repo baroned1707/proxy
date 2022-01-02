@@ -34,6 +34,10 @@ var https_options = {
 var cors_proxy = require("./lib/cors-anywhere");
 cors_proxy
 	.createServer({
+		target: {
+			host: "proxy.vuabanhmi.com",
+			port: 80,
+		},
 		ssl: {
 			...https_options,
 		},
