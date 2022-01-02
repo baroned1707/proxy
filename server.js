@@ -60,6 +60,13 @@ cors_proxy
 			// Do not add X-Forwarded-For, etc. headers, because Heroku already adds it.
 			xfwd: false,
 		},
+		ssl: {
+			key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
+
+			cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
+
+			ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
+		},
 	})
 	.listen(port, function () {
 		console.log("Running CORS Anywhere on " + host + ":" + port);
