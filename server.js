@@ -26,7 +26,6 @@ var checkRateLimit = require("./lib/rate-limit")(process.env.CORSANYWHERE_RATELI
 var cors_proxy = require("./lib/cors-anywhere");
 cors_proxy
 	.createServer({
-		target: "https://proxy.vuabanhmi.com",
 		ssl: {
 			key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
 
