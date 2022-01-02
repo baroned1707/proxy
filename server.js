@@ -1,8 +1,7 @@
 /** @format */
-
 const fs = require("fs");
 const path = require("path");
-var https = require("https");
+
 // Listen on a specific host via the HOST environment variable
 var host = process.env.HOST || "0.0.0.0";
 // Listen on a specific port via the PORT environment variable
@@ -60,7 +59,7 @@ cors_proxy
 			// Do not add X-Forwarded-For, etc. headers, because Heroku already adds it.
 			xfwd: false,
 		},
-		ssl: {
+		httpsOptions: {
 			key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
 
 			cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
