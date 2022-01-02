@@ -21,17 +21,20 @@ function parseEnvList(env) {
 // Set up rate-limiting to avoid abuse of the public CORS Anywhere server.
 var checkRateLimit = require("./lib/rate-limit")(process.env.CORSANYWHERE_RATELIMIT);
 
-// var https_options = {
-// 	key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
+var https_options = {
+	key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
 
-// 	cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
+	cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
 
-// 	ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
-// };
+	ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
+};
 
 var cors_proxy = require("./lib/cors-anywhere");
 cors_proxy
 	.createServer({
+		ssl: {
+			...https_options,
+		},
 		originBlacklist: originBlacklist,
 		originWhitelist: originWhitelist,
 		requireHeader: [],
