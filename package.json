@@ -20,8 +20,10 @@
     "server.js"
   ],
   "dependencies": {
+    "fs": "^0.0.1-security",
     "http-proxy": "1.11.1",
     "nodemon": "^2.0.15",
+    "path": "^0.12.7",
     "proxy-from-env": "0.0.1"
   },
   "devDependencies": {
