@@ -31,6 +31,8 @@ var https_options = {
 	ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
 };
 
+console.log(https_options);
+
 var cors_proxy = require("./lib/cors-anywhere");
 cors_proxy
 	.createServer({
