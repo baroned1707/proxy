@@ -37,7 +37,6 @@ var cors_proxy = require("./lib/cors-anywhere");
 
 cors_proxy
 	.createServer({
-		secure: true,
 		originBlacklist: originBlacklist,
 		originWhitelist: originWhitelist,
 		requireHeader: [],
@@ -61,15 +60,6 @@ cors_proxy
 			// Do not add X-Forwarded-For, etc. headers, because Heroku already adds it.
 			xfwd: false,
 		},
-		target: "https://proxy.vuabanhmi.com",
-		agent: new https.Agent({
-			port: 8043,
-			key: fs.readFileSync(path.join(process.cwd(), "ssl", "private.key")),
-
-			cert: fs.readFileSync(path.join(process.cwd(), "ssl", "certificate.crt")),
-
-			ca: [fs.readFileSync(path.join(process.cwd(), "ssl", "ca_bundle.crt"))],
-		}),
 	})
 	.listen(port, function () {
 		console.log("Running CORS Anywhere on " + host + ":" + port);
