@@ -25,6 +25,7 @@
     "https": "^1.0.0",
     "nodemon": "^2.0.15",
     "path": "^0.12.7",
+    "pm2": "^5.2.0",
     "proxy-from-env": "0.0.1"
   },
   "devDependencies": {
@@ -40,7 +41,9 @@
     "lint": "eslint .",
     "test": "mocha ./test/test*.js --reporter spec",
     "test-coverage": "istanbul cover ./node_modules/.bin/_mocha -- test/test.js test/test-ratelimit.js --reporter spec",
-    "start": "nodemon server"
+    "start": "pm2 start server.js",
+    "stop": "pm2 stop server.js",
+    "delete": "pm2 delete server.js"
   },
   "engines": {
     "node": ">=0.10.0"
